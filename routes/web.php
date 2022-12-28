@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\KecamatanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.app');
 });
+
+Route::resource('/kecamatan', '\App\Http\Controllers\Admin\KecamatanController');
