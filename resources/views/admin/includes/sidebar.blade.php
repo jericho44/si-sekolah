@@ -74,7 +74,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link" id="Pengumuman">
+                            <a href="{{ route('sekolah.index') }}" class="nav-link" id="Pengumuman">
                                 <i class="nav-icon fas fa-graduation-cap"></i>
                                 <p>Data Sekolah</p>
                             </a>

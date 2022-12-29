@@ -35,7 +35,7 @@
                                 <div class="form-group">
                                     <label>Nama Kecamatan</label>
                                     <select class="form-control select2" style="width: 100%;" name="kecamatan_id" required>
-                                        <option selected="selected">Pilih Kecamatan</option>
+                                        <option selected="selected"> --Pilih Kecamatan-- </option>
                                         @foreach ($kecamatan as $data)
                                             <option value="{{ $data->id }}"
                                                 {{ $data->id == $desa->kecamatan_id ? 'selected' : '' }}>

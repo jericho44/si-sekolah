@@ -89,5 +89,23 @@
                         }
                     });
             });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#preview').attr('src', e.target.result);
+                        $('#preview').attr('width', '50%');
+                        $('#preview').attr('hight', '50%');
+                    }
+
+                    reader.readAsDataURL(input.files[0])
+                }
+            }
+
+            $('#foto').change(function() {
+                readURL(this)
+            })
         });
     </script>
