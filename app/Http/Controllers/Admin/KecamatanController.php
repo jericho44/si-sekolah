@@ -45,11 +45,11 @@ class KecamatanController extends Controller
         ]);
 
         if (Kecamatan::create($kecamatan)) {
-            Alert::success('Success Title', 'Success Message');
+            Alert::question('Question Title', 'Question Message');
             return redirect()->route('kecamatan.index');
         }
-
-        return redirect()->back()->with('warning', 'Data kecamatan tidak berhasil diperbarui!');
+        toast('Data kecamatan tidak berhasil diperbarui!', 'error');
+        return redirect()->route('kecamatan.index');
     }
 
     /**
@@ -91,9 +91,10 @@ class KecamatanController extends Controller
         $kecamatan = Kecamatan::findOrFail($id);
 
         if ($kecamatan->update($params)) {
+            toast('Data Kecamatan berhasil diubah!', 'success');
             return redirect()->route('kecamatan.index');
         }
-        return redirect()->back()->with('warning', 'Data kecamatan tidak berhasil diperbarui!');
+        return redirect()->route('kecamatan.index');
     }
 
     /**

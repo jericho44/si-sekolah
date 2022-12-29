@@ -61,7 +61,7 @@
                                                         <i class="fas fa-pencil-alt"></i>
                                                         Ubah
                                                     </a>
-                                                    <button class="btn btn-danger btn-sm">
+                                                    <button class="btn btn-danger btn-sm delete-confirm">
                                                         <i class="fas fa-trash"></i>
                                                         Hapus
                                                     </button>
