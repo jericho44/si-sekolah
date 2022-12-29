@@ -1,16 +1,16 @@
 @extends('admin.app')
-@section('title', 'Tambah Kecamatan')
+@section('title', 'Tambah Desa')
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Kecamatan</h1>
+                    <h1 class="m-0">Desa</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item">Kecamatan</li>
+                        <li class="breadcrumb-item">Desa</li>
                         <li class="breadcrumb-item active">Tambah</li>
                     </ol>
                 </div><!-- /.col -->
@@ -24,17 +24,26 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Tambah Kecamatan</h3>
+                            <h3 class="card-title">Form Tambah Desa</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('kecamatan.store') }}" method="post">
+                        <form action="{{ route('desa.store') }}" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Masukan Nama Kecamatan</label>
+                                    <label>Nama Kecamatan</label>
+                                    <select class="form-control select2" style="width: 100%;" name="kecamatan_id" required>
+                                        <option selected="selected">Pilih Kecamatan</option>
+                                        @foreach ($kecamatan as $data)
+                                            <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Masukan Nama Desa</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" name="name" placeholder="Masukan nama kecamatan"
+                                        id="name" name="name" placeholder="Masukan nama Desa"
                                         value="{{ old('name') }}">
                                     @error('name')
                                         <div class="text-muted">{{ $message }}</div>

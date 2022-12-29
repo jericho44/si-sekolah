@@ -34,8 +34,12 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Masukan Nama Kecamatan</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Masukan nama kecamatan" value="{{ $kecamatan->name }}">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        id="name" name="name" placeholder="Masukan nama kecamatan"
+                                        value="{{ $kecamatan->name, old('name') }}">
+                                    @error('name')
+                                        <div class="text-muted">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- /.card-body -->

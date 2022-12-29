@@ -66,7 +66,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" class="nav-link" id="DataJadwal">
+                                    <a href="{{ route('desa.index') }}" class="nav-link" id="DataJadwal">
                                         <i class="fa fa-map-marker nav-icon"></i>
                                         <p>Desa</p>
                                     </a>

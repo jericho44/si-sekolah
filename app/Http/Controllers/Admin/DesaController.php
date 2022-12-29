@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Desa;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
-
-use RealRashid\SweetAlert\Facades\Alert as Alert;
-
-class KecamatanController extends Controller
+class DesaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,9 @@ class KecamatanController extends Controller
      */
     public function index()
     {
-        $kecamatan = Kecamatan::OrderBy('name', 'asc')->get();
-        return view('admin.pages.kecamatan.index', compact('kecamatan'));
+        $desa = Desa::OrderBy('name', 'asc')->get();
+
+        return view('admin.pages.desa.index', compact('desa',));
     }
 
     /**
@@ -29,7 +28,8 @@ class KecamatanController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.kecamatan.create');
+        $kecamatan = Kecamatan::OrderBy('name', 'asc')->get();
+        return view('admin.pages.desa.create', compact('kecamatan'));
     }
 
     /**
@@ -40,15 +40,16 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
-        $kecamatan = $this->validate($request, [
-            'name' => 'required|string|unique:kecamatan',
+        $params = $this->validate($request, [
+            'kecamatan_id' => 'required|integer',
+            'name' => 'required|string|unique:desa,name',
         ]);
 
-        if (Kecamatan::create($kecamatan)) {
-            toast('Data Kecamatan berhasil ditambahkan!', 'success');
-            return redirect()->route('kecamatan.index');
+        if (Desa::create($params)) {
+            toast('Data Desa berhasil ditambahkan!', 'success');
+            return redirect()->route('desa.index');
         }
-        return redirect()->route('kecamatan.index');
+        return redirect()->route('desa.index');
     }
 
     /**
@@ -70,8 +71,10 @@ class KecamatanController extends Controller
      */
     public function edit($id)
     {
-        $kecamatan = Kecamatan::findOrFail($id);
-        return view('admin.pages.kecamatan.edit', compact('kecamatan'));
+        $kecamatan = Kecamatan::OrderBy('name', 'asc')->get();
+        $desa = Desa::findOrFail($id);
+
+        return view('admin.pages.desa.edit', compact('desa', 'kecamatan'));
     }
 
     /**
@@ -84,16 +87,17 @@ class KecamatanController extends Controller
     public function update(Request $request, $id)
     {
         $params = $this->validate($request, [
-            'name' => 'required|unique:kecamatan',
+            'kecamatan_id' => 'required|integer',
+            'name' => 'required|string|unique:desa,name',
         ]);
 
-        $kecamatan = Kecamatan::findOrFail($id);
+        $desa = Desa::findOrFail($id);
 
-        if ($kecamatan->update($params)) {
-            toast('Data Kecamatan berhasil diubah!', 'success');
-            return redirect()->route('kecamatan.index');
+        if ($desa->update($params)) {
+            toast('Data Desa berhasil diubah!', 'success');
+            return redirect()->route('desa.index');
         }
-        return redirect()->route('kecamatan.index');
+        return redirect()->route('desa.index');
     }
 
     /**
@@ -104,12 +108,12 @@ class KecamatanController extends Controller
      */
     public function destroy($id)
     {
-        $kecamatan = Kecamatan::findOrFail($id);
+        $desa = Desa::findOrFail($id);
 
-        if ($kecamatan->delete()) {
-            toast('Data Kecamatan berhasil dihapus!', 'success');
+        if ($desa->delete()) {
+            toast('Data Desa berhasil dihapus!', 'success');
         }
 
-        return redirect()->route('kecamatan.index');
+        return redirect()->route('desa.index');
     }
 }
