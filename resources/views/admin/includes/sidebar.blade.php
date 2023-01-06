@@ -86,14 +86,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link" id="Pengumuman">
+                            <a href="{{ route('siswa.index') }}" class="nav-link" id="Pengumuman">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Data Siswa</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link" id="Pengumuman">
-                                <i class="nav-icon fas fa-home"></i>
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>Data Ruangan</p>
                             </a>
                         </li>

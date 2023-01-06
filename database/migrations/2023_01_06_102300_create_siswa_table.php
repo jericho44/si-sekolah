@@ -15,7 +15,12 @@ class CreateSiswaTable extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('sekolah_id');
+            $table->string('name', 50)->nullable();
+            $table->enum('kelamin', ['L', 'P']);
             $table->timestamps();
+
+            $table->foreign('sekolah_id')->references('id')->on('sekolah');
         });
     }
 

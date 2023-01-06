@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Guru;
 use App\Models\Sekolah;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
-class GuruController extends Controller
+class SiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $guru = Guru::orderBy('name', 'asc')->get();
-        return view('admin.pages.guru.index', compact('guru'));
+        $siswa = Siswa::orderBy('name', 'asc')->get();
+        return view('admin.pages.siswa.index', compact('siswa'));
     }
 
     /**
@@ -28,7 +28,7 @@ class GuruController extends Controller
     public function create()
     {
         $sekolah = Sekolah::OrderBy('name', 'asc')->get();
-        return view('admin.pages.guru.create', compact('sekolah'));
+        return view('admin.pages.siswa.create', compact('sekolah'));
     }
 
     /**
@@ -45,11 +45,11 @@ class GuruController extends Controller
             'kelamin' => 'required'
         ]);
 
-        if (Guru::create($params)) {
-            toast('Data Guru berhasil ditambahkan!', 'success');
-            return redirect()->route('guru.index');
+        if (Siswa::create($params)) {
+            toast('Data Siswa berhasil ditambahkan!', 'success');
+            return redirect()->route('siswa.index');
         }
-        return redirect()->route('guru.index');
+        return redirect()->route('siswa.index');
     }
 
     /**
@@ -72,9 +72,9 @@ class GuruController extends Controller
     public function edit($id)
     {
         $sekolah = Sekolah::orderBy('name', 'asc')->get();
-        $guru = Guru::findOrFail($id);
+        $siswa = Siswa::findOrFail($id);
 
-        return view('admin.pages.guru.edit', compact('sekolah', 'guru'));
+        return view('admin.pages.siswa.edit', compact('sekolah', 'siswa'));
     }
 
     /**
@@ -92,13 +92,13 @@ class GuruController extends Controller
             'kelamin' => 'required'
         ]);
 
-        $guru = Guru::findOrFail($id);
+        $siswa = Siswa::findOrFail($id);
 
-        if ($guru->update($params)) {
-            toast('Data Guru berhasil diubah!', 'success');
-            return redirect()->route('guru.index');
+        if ($siswa->update($params)) {
+            toast('Data siswa berhasil diubah!', 'success');
+            return redirect()->route('siswa.index');
         }
-        return redirect()->route('guru.index');
+        return redirect()->route('siswa.index');
     }
 
     /**
@@ -109,12 +109,12 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        $guru = Guru::findOrFail($id);
+        $siswa = Siswa::findOrFail($id);
 
-        if ($guru->delete()) {
-            toast('Data Guru berhasil dihapus!', 'success');
+        if ($siswa->delete()) {
+            toast('Data siswa berhasil dihapus!', 'success');
         }
 
-        return redirect()->route('guru.index');
+        return redirect()->route('siswa.index');
     }
 }
