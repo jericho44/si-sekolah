@@ -23,3 +23,4 @@ Route::resource('/desa', '\App\Http\Controllers\Admin\DesaController');
 Route::resource('/sekolah', '\App\Http\Controllers\Admin\SekolahController');
 Route::resource('/guru', '\App\Http\Controllers\Admin\GuruController');
 Route::resource('/siswa', '\App\Http\Controllers\Admin\SiswaController');
+Route::resource('/ruangan', '\App\Http\Controllers\Admin\RuanganController');
