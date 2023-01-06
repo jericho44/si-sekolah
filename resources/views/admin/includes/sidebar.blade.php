@@ -80,7 +80,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link" id="Pengumuman">
+                            <a href="{{ route('guru.index') }}" class="nav-link" id="Pengumuman">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Data Guru</p>
                             </a>

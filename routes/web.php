@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::resource('/kecamatan', '\App\Http\Controllers\Admin\KecamatanController');
 Route::resource('/desa', '\App\Http\Controllers\Admin\DesaController');
 Route::resource('/sekolah', '\App\Http\Controllers\Admin\SekolahController');
+Route::resource('/guru', '\App\Http\Controllers\Admin\GuruController');
