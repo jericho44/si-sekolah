@@ -107,5 +107,7 @@
             $('#foto').change(function() {
                 readURL(this)
             })
+
+            $('#summernote').summernote();
         });
     </script>

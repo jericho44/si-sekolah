@@ -99,7 +99,7 @@
                         </li>
                         <li class="nav-header">Announcement</li>
                         <li class="nav-item">
-                            <a href="" class="nav-link" id="Pengumuman">
+                            <a href="{{ route('pengumuman.index') }}" class="nav-link" id="Pengumuman">
                                 <i class="nav-icon fas fa-clipboard"></i>
                                 <p>Pengumuman</p>
                             </a>
