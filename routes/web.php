@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\KecamatanController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,7 @@ Route::resource('/siswa', '\App\Http\Controllers\Admin\SiswaController');
 Route::resource('/ruangan', '\App\Http\Controllers\Admin\RuanganController');
 Route::resource('/pengumuman', '\App\Http\Controllers\Admin\PengumumanController');
 Route::resource('/kegiatan', '\App\Http\Controllers\Admin\KegiatanController');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

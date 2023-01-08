@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddJumlahToRuanganTable extends Migration
+class AddRoleToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddJumlahToRuanganTable extends Migration
      */
     public function up()
     {
-        Schema::table('ruangan', function (Blueprint $table) {
-            $table->integer('jumlah')->after('name');
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('role')->default('0');
         });
     }
 
@@ -25,8 +25,8 @@ class AddJumlahToRuanganTable extends Migration
      */
     public function down()
     {
-        Schema::table('ruangan', function (Blueprint $table) {
-            $table->integer('ruangan');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');
         });
     }
 }
