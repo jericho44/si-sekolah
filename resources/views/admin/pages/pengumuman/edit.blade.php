@@ -1,5 +1,5 @@
 @extends('admin.app')
-@section('title', 'Tambah Pengumuman')
+@section('title', 'Ubah Pengumuman')
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
