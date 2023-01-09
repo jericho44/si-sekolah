@@ -11,18 +11,20 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <div class="btn-group" role="group">
-                        <a id="btnGroupDrop1" style="color: #fff; margin-right: 40px;" type="button"
+                        <a id="btnGroupDrop1" style="color: rgb(0, 0, 0); margin-right: 40px;" type="button"
                             class="dropdown-toggle text-capitalize" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            <i class="nav-icon fas fa-user-circle"></i> &nbsp; Profile
+                            <i class="nav-icon fas fa-user-circle"></i> &nbsp;
+                            {{ Auth::user()->name ? Auth::user()->name : 'Profile' }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             <a class="dropdown-item" href=""><i class="nav-icon fas fa-user"></i>
                                 &nbsp; My Profile</a>
-                            <a class="dropdown-item" href=""
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i
                                     class="nav-icon fas fa-sign-out-alt"></i> &nbsp; Log Out</a>
-                            <form id="logout-form" action="" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
